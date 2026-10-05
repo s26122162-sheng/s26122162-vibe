@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Quest | 網頁前端作品集入口</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --mint-bright: #00f5a0;
+            --mint-dark: #00d990;
+            --lime-glow: #a8ff78;
+            --turquoise-electric: #00d2ff;
+            --coral-pop: #ff6b6b;
+            --orange-sunrise: #ff9f43;
+            --bg-glass: rgba(255, 255, 255, 0.75);
+            --bg-glass-locked: rgba(241, 245, 249, 0.55);
+            --border-glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+            background-color: #f1f5f9;
+            color: #0f172a;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Animated Blobs Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e0f2fe 0%, #ecfdf5 50%, #fff7ed 100%);
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.65;
+            animation: float-blob 12s ease-in-out infinite alternate;
+        }
+
+        .blob-1 {
+            width: 420px;
+            height: 420px;
+            background: var(--mint-bright);
+            top: -100px;
+            left: -80px;
+        }
+
+        .blob-2 {
+            width: 480px;
+            height: 480px;
+            background: var(--coral-pop);
+            bottom: -120px;
+            right: -100px;
+            animation-delay: -4s;
+        }
+
+        .blob-3 {
+            width: 360px;
+            height: 360px;
+            background: var(--turquoise-electric);
+            top: 35%;
+            right: 10%;
+            animation-delay: -8s;
+        }
+
+        .blob-4 {
+            width: 300px;
+            height: 300px;
+            background: var(--lime-glow);
+            bottom: 20%;
+            left: 15%;
+            animation-delay: -2s;
+        }
+
+        @keyframes float-blob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(45px, 55px) scale(1.15); }
+            100% { transform: translate(-35px, 75px) scale(0.92); }
+        }
+
+        /* Vibrant Glassmorphism Card */
+        .glass-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid var(--border-glass);
+            box-shadow: 0 20px 40px -15px rgba(0, 217, 144, 0.12),
+                        0 10px 20px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Rainbow Avatar Glow Ring */
+        .avatar-glow {
+            position: relative;
+            padding: 5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--mint-bright), var(--turquoise-electric), var(--coral-pop), var(--lime-glow));
+            background-size: 300% 300%;
+            animation: ring-gradient 5s ease infinite;
+            box-shadow: 0 10px 25px rgba(0, 245, 160, 0.35);
+        }
+
+        @keyframes ring-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Unlocked Buttons Fresh Styling & Hover Effects */
+        .btn-unlocked {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(236, 253, 245, 0.85) 100%);
+            border: 1.5px solid rgba(0, 217, 144, 0.3);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-unlocked::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.75s ease;
+        }
+
+        .btn-unlocked:hover::before {
+            left: 150%;
+        }
+
+        .btn-unlocked:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #00d990;
+            box-shadow: 0 20px 30px -10px rgba(0, 217, 144, 0.3),
+                        0 8px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Locked Buttons Styling & Playful Lock Shake */
+        .btn-locked {
+            background: var(--bg-glass-locked);
+            border: 1.5px dashed rgba(148, 163, 184, 0.4);
+            color: #94a3b8;
+            cursor: not-allowed;
+            transition: all 0.3s ease;
+        }
+
+        .btn-locked:hover {
+            background: rgba(248, 250, 252, 0.9);
+            border-color: rgba(255, 107, 107, 0.6);
+            color: #64748b;
+            box-shadow: 0 8px 20px -5px rgba(255, 107, 107, 0.2);
+            animation: playful-shake 0.4s ease-in-out;
+        }
+
+        @keyframes playful-shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-5px) rotate(-1.5deg); }
+            40% { transform: translateX(5px) rotate(1.5deg); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+
+        /* Animated Progress Bar Flow */
+        .progress-flow {
+            background: linear-gradient(90deg, #00f5a0, #00d2ff, #facc15, #ff6b6b);
+            background-size: 200% 100%;
+            animation: flow-smooth 3s linear infinite;
+        }
+
+        @keyframes flow-smooth {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-start min-h-screen p-4 sm:p-6 md:p-10">
+
+    <div class="ambient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-5xl mx-auto flex flex-col items-center gap-8 z-10">
+
+        <header class="w-full glass-card rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center relative overflow-hidden">
+            <!-- Top Gradient Accent Strip -->
+            <div class="absolute top-0 left-0 right-0 h-2.5 bg-gradient-to-r from-emerald-400 via-teal-400 via-cyan-400 to-coral-400"></div>
+
+            <!-- Avatar Header -->
+            <div class="avatar-glow mb-4">
+                <img 
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250" 
+                    alt="User Avatar" 
+                    class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover block border-4 border-white shadow-inner"
+                    onerror="this.src='https://placehold.co/200x200/d1fae5/059669?text=AVATAR'"
+                >
+            </div>
+
+            <!-- Level / Quest Status Badge -->
+            <div class="flex items-center gap-2 mb-3">
+                <span class="px-3.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-2 shadow-sm tracking-wide">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> LVL 01 • HTML & CSS
+                </span>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <h1 class="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight mb-1">
+                王小明 <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-600">の 作品集</span>
+            </h1>
+            <p class="text-xs sm:text-sm font-bold text-slate-500 tracking-wider uppercase mb-6">
+                網頁程式設計作品集 • WEB DEV QUEST 2026
+            </p>
+
+            <div class="w-full max-w-md bg-white/80 p-4 rounded-2xl border border-emerald-100 shadow-sm flex flex-col gap-2.5">
+                <div class="flex justify-between items-center text-xs font-extrabold">
+                    <span class="text-emerald-700 flex items-center gap-1.5 tracking-wide">
+                        <i class="fa-solid fa-trophy text-amber-400 animate-bounce"></i> 闖關進度
+                    </span>
+                    <span class="text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">進度：2 / 16 (12.5%)</span>
+                </div>
+                <!-- Progress Bar Container -->
+                <div class="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/80 shadow-inner">
+                    <div class="progress-flow h-full rounded-full w-[12.5%] transition-all duration-1000"></div>
+                </div>
+            </div>
+        </header>
+
+        <section class="w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+
+                <!-- ===== WEEK 1 (UNLOCKED) ===== -->
+                <a href="w1/index.html" class="btn-unlocked glass-card rounded-2xl p-5 flex flex-col justify-between group h-36">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-black px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 border border-emerald-200">
+                            WEEK 01
+                        </span>
+                        <span class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-sm font-bold shadow-md shadow-emerald-500/30 group-hover:scale-110 transition-transform">
+                            ✨
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors line-clamp-1">
+                            Week 1 - 數位名片
+                        </h3>
+                        <p class="text-xs text-emerald-600 font-semibold mt-1 flex items-center gap-1">
+                            點擊探索關卡 <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                        </p>
+                    </div>
+                </a>
+
+                <!-- ===== WEEK 2 (UNLOCKED) ===== -->
+                <a href="w2/index.html" class="btn-unlocked glass-card rounded-2xl p-5 flex flex-col justify-between group h-36">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-black px-2.5 py-1 rounded-lg bg-cyan-100 text-cyan-700 border border-cyan-200">
+                            WEEK 02
+                        </span>
+                        <span class="w-9 h-9 rounded-xl bg-cyan-500 text-white flex items-center justify-center text-sm font-bold shadow-md shadow-cyan-500/30 group-hover:scale-110 transition-transform">
+                            🎲
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-cyan-600 transition-colors line-clamp-1">
+                            Week 2 - 今天吃甚麼?
+                        </h3>
+                        <p class="text-xs text-cyan-600 font-semibold mt-1 flex items-center gap-1">
+                            點擊探索關卡 <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                        </p>
+                    </div>
+                </a>
+
+                <!-- ===== WEEK 3 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 03
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 3 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 4 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 04
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 4 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 5 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 05
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 5 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 6 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 06
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 6 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 7 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 07
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 7 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 8 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 08
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 8 - 期中展示</h3>
+                        <p class="text-xs text-slate-400 mt-1">關卡挑戰中...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 9 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 09
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 9 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 10 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 10
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 10 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 11 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 11
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 11 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 12 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 12
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 12 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 13 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 13
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 13 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 14 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 14
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 14 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 15 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 15
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 15 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
+                    </div>
+                </div>
+
+                <!-- ===== WEEK 16 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
+                            WEEK 16
+                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 16 - 期末展示</h3>
+                        <p class="text-xs text-slate-400 mt-1">終極 Boss 成果展...</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="w-full text-center text-xs font-semibold text-slate-500 py-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p>© 2026 Web Programming Course • Fresh Quest Portfolio Entry</p>
+            <div class="flex gap-4 text-base">
+                <a href="#" class="hover:text-emerald-600 transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="hover:text-emerald-600 transition-colors"><i class="fa-brands fa-codepen"></i></a>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
