@@ -207,7 +207,7 @@
             <!-- Top Gradient Accent Strip -->
             <div class="absolute top-0 left-0 right-0 h-2.5 bg-gradient-to-r from-emerald-400 via-teal-400 via-cyan-400 to-coral-400"></div>
 
-            <!-- Avatar Header -->
+            <!-- Avatar Header with provided URL -->
             <div class="avatar-glow mb-4">
                 <img 
                     src="https://i.postimg.cc/mtmfMCT6/avatar.jpg" 
@@ -238,11 +238,11 @@
                     <span class="text-emerald-700 flex items-center gap-1.5 tracking-wide">
                         <i class="fa-solid fa-trophy text-amber-400 animate-bounce"></i> 闖關進度
                     </span>
-                    <span class="text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">進度：3 / 16 (18.75%)</span>
+                    <span class="text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">進度：2 / 16 (12.5%)</span>
                 </div>
                 <!-- Progress Bar Container -->
                 <div class="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/80 shadow-inner">
-                    <div class="progress-flow h-full rounded-full w-[18.75%] transition-all duration-1000"></div>
+                    <div class="progress-flow h-full rounded-full w-[12.5%] transition-all duration-1000"></div>
                 </div>
             </div>
         </header>
@@ -290,30 +290,19 @@
                     </div>
                 </a>
 
-                <!-- ===== WEEK 3 (UNLOCKED WITH IMAGE COVER) ===== -->
-                <a href="w3/index.html" class="btn-unlocked glass-card rounded-2xl p-5 flex flex-col justify-between group h-36 relative overflow-hidden">
-                    <!-- Image Cover Overlay -->
-                    <div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-35 transition-opacity duration-300">
-                        <img src="https://i.postimg.cc/ZC2tCYdf/image.jpg" alt="Week 3 Preview" class="w-full h-full object-cover">
-                    </div>
-
-                    <div class="flex items-center justify-between z-10">
-                        <span class="text-[11px] font-black px-2.5 py-1 rounded-lg bg-amber-100 text-amber-700 border border-amber-200">
+                <!-- ===== WEEK 3 (LOCKED) ===== -->
+                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
                             WEEK 03
                         </span>
-                        <span class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center text-sm font-bold shadow-md shadow-amber-500/30 group-hover:scale-110 transition-transform">
-                            🚀
-                        </span>
+                        <span class="text-slate-400 text-base">🔒</span>
                     </div>
-                    <div class="z-10">
-                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-amber-600 transition-colors line-clamp-1">
-                            Week 3 - 探索專案
-                        </h3>
-                        <p class="text-xs text-amber-600 font-semibold mt-1 flex items-center gap-1">
-                            點擊探索關卡 <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                        </p>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-400">Week 3 - 未解鎖</h3>
+                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
                     </div>
-                </a>
+                </div>
 
                 <!-- ===== WEEK 4 (LOCKED) ===== -->
                 <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
