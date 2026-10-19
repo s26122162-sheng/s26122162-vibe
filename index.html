@@ -235,18 +235,18 @@
             </p>
 
             <!-- Quest Progress Status -->
-            <div class="w-full max-w-md bg-white/80 p-4 rounded-2xl border border-emerald-100 shadow-sm flex flex-col gap-2.5">
-                <div class="flex justify-between items-center text-xs font-extrabold">
-                    <span class="text-emerald-700 flex items-center gap-1.5 tracking-wide">
-                        <i class="fa-solid fa-trophy text-amber-400 animate-bounce"></i> 闖關進度
-                    </span>
-                    <span class="text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">進度：3 / 16 (18.75%)</span>
-                </div>
-                <!-- Progress Bar Container -->
-                <div class="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/80 shadow-inner">
-                    <div class="progress-flow h-full rounded-full w-[18.75%] transition-all duration-1000"></div>
-                </div>
-            </div>
+            div class="w-full max-w-md bg-white/80 p-4 rounded-2xl border border-emerald-100 shadow-sm flex flex-col gap-2.5">
+    <div class="flex justify-between items-center text-xs font-extrabold">
+        <span class="text-emerald-700 flex items-center gap-1.5 tracking-wide">
+            <i class="fa-solid fa-trophy text-amber-400 animate-bounce"></i> 闖關進度
+        </span>
+        <span class="text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">進度：4 / 16 (25%)</span>
+    </div>
+    <!-- Progress Bar Container -->
+    <div class="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/80 shadow-inner">
+        <div class="progress-flow h-full rounded-full w-[25%] transition-all duration-1000"></div>
+    </div>
+</div>
         </header>
 
         <section class="w-full">
@@ -312,19 +312,25 @@
                     </div>
                 </a>
 
-                <!-- ===== WEEK 4 (LOCKED) ===== -->
-                <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-slate-200/70 text-slate-400">
-                            WEEK 04
-                        </span>
-                        <span class="text-slate-400 text-base">🔒</span>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-slate-400">Week 4 - 未解鎖</h3>
-                        <p class="text-xs text-slate-400 mt-1">任務尚未開放...</p>
-                    </div>
-                </div>
+               <!-- ===== WEEK 4 (UNLOCKED - OK TO CLICK) ===== -->
+<a href="w4/index.html" class="btn-unlocked glass-card rounded-2xl p-5 flex flex-col justify-between group h-36">
+    <div class="flex items-center justify-between">
+        <span class="text-[11px] font-black px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 border border-indigo-200">
+            WEEK 04
+        </span>
+        <span class="w-9 h-9 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-sm font-bold shadow-md shadow-indigo-500/30 group-hover:scale-110 transition-transform">
+            🤫
+        </span>
+    </div>
+    <div>
+        <h3 class="text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors line-clamp-1">
+            Week 4 - 悄悄話
+        </h3>
+        <p class="text-xs text-indigo-600 font-semibold mt-1 flex items-center gap-1">
+            點擊探索關卡 <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+        </p>
+    </div>
+</a>
 
                 <!-- ===== WEEK 5 (LOCKED) ===== -->
                 <div class="btn-locked rounded-2xl p-5 flex flex-col justify-between h-36 select-none relative group">
